@@ -51,6 +51,13 @@
             <version>${allure.version}</version>
         </dependency>
 
+        <!-- Allure Step Annotation integration -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.25.0</version>
+        </dependency>
+
         <!-- Log4j2 - logging -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -61,6 +68,11 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.21.0</version>
         </dependency>
 
     </dependencies>

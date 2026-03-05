@@ -26,7 +26,7 @@ public class ConfigReader {
         properties = new Properties();
 
         // This path points to your config.properties file
-        String configPath = "src/main/resources/config.properties";
+        String configPath = "./resources/config.properties";
 
         try {
             FileInputStream fis = new FileInputStream(configPath);

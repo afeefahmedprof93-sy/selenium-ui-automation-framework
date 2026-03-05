@@ -1,6 +1,9 @@
 package com.orange.automation.utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
+import java.time.Duration;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -51,6 +54,7 @@ public class DriverManager {
                 options.addArguments("--start-maximized");
                 options.addArguments("--disable-notifications");
                 webDriver = new ChromeDriver(options);
+                webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(ConfigReader.getImplicitWait()));
                 logger.info("Chrome browser launched");
                 break;
         }
@@ -64,6 +68,14 @@ public class DriverManager {
             logger.info("Closing browser");
             driver.get().quit();
             driver.remove(); // Cleans up ThreadLocal
+        }
+    }
+
+    public static void goToURL(String url) {
+        try {
+            driver.get().get(url);
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
