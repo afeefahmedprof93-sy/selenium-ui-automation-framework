@@ -2,43 +2,56 @@ package com.orange.automation.pageobjects;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import com.orange.automation.base.BasePage;
-
-import io.qameta.allure.Step;
 
 public class LoginPage extends BasePage {
 
     @FindBy(name = "username")
-    private WebElement usernameInput;
+    private static WebElement usernameInput;
 
     @FindBy(name = "password")
-    private WebElement passwordInput;
+    private static WebElement passwordInput;
 
     @FindBy(css = "button.orangehrm-login-button")
-    private WebElement loginButton;
+    private static WebElement loginButton;
 
-    @Step("Enter username: {0}")
     public void enterUsername(String username) {
-        this.usernameInput.clear();
-        this.usernameInput.sendKeys(username);
+        try{
+            usernameInput.clear();
+            usernameInput.sendKeys(username);
+            stepPassed("Username is successfully entered");
+        } catch(Exception e) {
+            stepFailed("Failed to enter Username :" + e.getMessage());
+        }
     }
 
-    @Step("Enter password: {0}")
     public void enterPassword(String password) {
-        this.passwordInput.clear();
-        this.passwordInput.sendKeys(password);
+        try{
+            passwordInput.clear();
+            passwordInput.sendKeys(password);
+            stepPassed("Username is successfully password");
+        } catch(Exception e) {
+            stepFailed("Failed to enter password :" + e.getMessage());
+        }
     }
 
-    @Step("Click login button")
     public void clickLogin() {
-        this.loginButton.click();
+        try {
+            loginButton.click();
+            stepPassed("Successfully clicked the login button");
+        } catch (Exception e) {
+            stepFailed("Failed to click the login button :" + e.getMessage());
+        }
     }
 
-    @Step("Perform login with username: {0} and password: {1}")
     public void login(String username, String password) {
-        this.enterUsername(username);
-        this.enterPassword(password);
-        this.clickLogin();
+        try {
+            enterUsername(username);
+            enterPassword(password);
+            clickLogin();
+            stepPassed("Successfully logged in");
+        } catch (Exception e) {
+            stepFailed("Failed to log in :" + e.getMessage());
+        }
     }  
 }

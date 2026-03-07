@@ -32,7 +32,6 @@ public class BaseTest {
 
     @AfterSuite
     public void teardown() {
-        DriverManager.quitDriver();
         AllureReport.generateAllureReport();
     }
 

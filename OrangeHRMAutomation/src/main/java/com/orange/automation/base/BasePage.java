@@ -24,7 +24,7 @@ public class BasePage {
     public static void stepPassed(String message) {
 
         // Log failure with Log4j2
-        logger.error("Test Passed: {}", message);
+        logger.info("Test Passed: {}", message);
 
         // Add step to Allure report
         Allure.step("Test Passed: " + message);

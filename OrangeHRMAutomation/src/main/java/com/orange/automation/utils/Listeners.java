@@ -14,7 +14,7 @@ public class Listeners implements ITestListener{
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        BasePage.stepFailed("Assertion Faild. Found result: " + iTestResult.getThrowable());
+        BasePage.stepFailed("Assertion Failed. Found result: " + iTestResult.getName() + " : " + iTestResult.getThrowable());
     }
 
     @Override
