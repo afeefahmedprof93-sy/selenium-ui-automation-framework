@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="SmokeSuite">
+    <listeners>
+        <listener class-name="com.orange.automation.utils.Listeners"></listener>
+    </listeners>
+    <test name="SmokeTests">
+        <classes>
+            <class name="com.orange.automation.testcases.LoginPageTest"/>
+             <methods>
+                <include name="verifyLogin"/> 
+             </methods>
+        </classes>
+    </test>
+</suite>
