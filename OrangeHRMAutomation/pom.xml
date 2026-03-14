@@ -87,7 +87,7 @@
                 <version>3.2.5</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>test-suites/smoketest.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
