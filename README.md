@@ -221,7 +221,9 @@ Loaded once via a static block, `ConfigReader` provides type-safe access to all 
 
 | Module         | Test Case       | Description                        | Severity |
 |----------------|-----------------|------------------------------------|----------|
-| Authentication | `verifyLogin`   | Login with valid credentials       | CRITICAL |
+| Authentication | `Login with valid credentials`   | Enter Admin/admin123 → verify redirect to dashboard      | CRITICAL |
+| Authentication | `Login with invalid credentials`   | Enter wrong username/password → verify error message      | CRITICAL |
+| Authentication | `Login with empty fields`   | Submit blank form → verify required field validation       | HIGH |
 
 ---
 
