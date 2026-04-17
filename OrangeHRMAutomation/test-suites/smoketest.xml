@@ -8,7 +8,9 @@
         <classes>
             <class name="com.orange.automation.testcases.LoginPageTest"/>
              <methods>
-                <include name="verifyLogin"/> 
+                <include name="TC_001_LoginWithValidCredentials"/>
+                <include name="TC_002_LoginWithInvalidCredentials"/>
+                <include name="TC_003_LoginWithEmptyFields"/>
              </methods>
         </classes>
     </test>
