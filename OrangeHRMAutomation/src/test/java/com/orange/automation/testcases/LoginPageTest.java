@@ -1,36 +1,102 @@
 package com.orange.automation.testcases;
 
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
 import com.orange.automation.base.BaseTest;
 import com.orange.automation.pageobjects.LoginPage;
 import com.orange.automation.utils.ConfigReader;
 import com.orange.automation.utils.PageManager;
+import io.qameta.allure.*;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
+/**
+ * Test class covering Authentication module test cases:
+ *  TC-001 — Login with valid credentials
+ *  TC-002 — Login with invalid credentials
+ *  TC-003 — Login with empty fields
+ */
+@Epic("OrangeHRM")
+@Feature("Authentication")
+public class LoginPageTest extends BaseTest {
 
-@Epic("Authentication Module")
-@Feature("Login Feature")
-@Listeners({io.qameta.allure.testng.AllureTestNg.class})
-public class LoginPageTest extends BaseTest{
+    // ─────────────────────────────────────────────────────────────
+    // TC-001: Login with valid credentials
+    // ─────────────────────────────────────────────────────────────
 
-    LoginPage loginPage;
-    
-    @Test
+    @Test(priority = 1, description = "TC-001: Login with valid credentials")
     @Story("Valid Login")
     @Severity(SeverityLevel.CRITICAL)
-    @Description("User can login with valid credentials")
-    public void verifyLogin() {
-        logger.info("[Start]: verifyLogin");
+    @Description("Enter valid credentials Admin/admin123 and verify redirect to Dashboard")
+    public void TC_001_LoginWithValidCredentials() {
 
-        loginPage = PageManager.getLoginPage();
+        LoginPage loginPage = PageManager.getLoginPage();
 
-        loginPage.login(ConfigReader.getUsername(),ConfigReader.getPassword());
+        loginPage.loginWith(
+                ConfigReader.getUsername(),   // Admin
+                ConfigReader.getPassword()    // admin123
+        );
 
+        Assert.assertTrue(
+                loginPage.isDashboardDisplayed(),
+                "Dashboard should be displayed after successful login"
+        );
+
+        Assert.assertEquals(
+                loginPage.getDashboardHeaderText(),
+                "Dashboard",
+                "Page header should read 'Dashboard' after login"
+        );
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // TC-002: Login with invalid credentials
+    // ─────────────────────────────────────────────────────────────
+
+    @Test(priority = 2, description = "TC-002: Login with invalid credentials")
+    @Story("Invalid Login")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Enter wrong username/password and verify the error message is displayed")
+    public void TC_002_LoginWithInvalidCredentials() {
+
+        LoginPage loginPage = PageManager.getLoginPage();
+
+        loginPage.loginWith("invalidUser", "wrongPassword123");
+
+        Assert.assertTrue(
+                loginPage.isInvalidCredentialsErrorDisplayed(),
+                "Error alert should be visible for invalid credentials"
+        );
+
+        Assert.assertEquals(
+                loginPage.getInvalidCredentialsErrorText(),
+                "Invalid credentials",
+                "Error message text should be 'Invalid credentials'"
+        );
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // TC-003: Login with empty fields
+    // ─────────────────────────────────────────────────────────────
+
+    @Test(priority = 3, description = "TC-003: Login with empty fields")
+    @Story("Empty Field Validation")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Submit blank login form and verify required field validation messages appear")
+    public void TC_003_LoginWithEmptyFields() {
+
+        LoginPage loginPage = PageManager.getLoginPage();
+
+        loginPage.clickLoginWithoutCredentials();
+
+        Assert.assertEquals(
+                loginPage.getUsernameRequiredErrorText(),
+                "Required",
+                "Username field should show 'Required' validation message"
+        );
+
+        Assert.assertEquals(
+                loginPage.getPasswordRequiredErrorText(),
+                "Required",
+                "Password field should show 'Required' validation message"
+        );
     }
 }
