@@ -2,7 +2,6 @@ package com.orange.automation.pageobjects;
 
 import com.orange.automation.base.BasePage;
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
