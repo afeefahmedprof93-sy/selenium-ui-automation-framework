@@ -1,7 +1,5 @@
 # 🍊 OrangeHRM UI Automation Framework
 
-A robust, production-ready **Selenium + TestNG** automation framework for testing the [OrangeHRM](https://opensource-demo.orangehrmlive.com) web application. Built with clean architecture principles, including the **Page Object Model (POM)**, **ThreadLocal WebDriver** for parallel execution, **Allure reporting**, and **Log4j2 logging**.
-
 ![Java](https://img.shields.io/badge/Java-17-orange?logo=openjdk)
 ![Selenium](https://img.shields.io/badge/Selenium-Automation-43B02A?logo=selenium)
 ![TestNG](https://img.shields.io/badge/TestNG-Testing-red)
@@ -12,6 +10,8 @@ A robust, production-ready **Selenium + TestNG** automation framework for testin
 ![Parallel Execution](https://img.shields.io/badge/Execution-Parallel-success)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=github-actions)
 ![License](https://img.shields.io/github/license/YOUR_USERNAME/YOUR_REPO)
+
+A robust, production-ready **Selenium + TestNG** automation framework for testing the [OrangeHRM](https://opensource-demo.orangehrmlive.com) web application. Built with clean architecture principles, including the **Page Object Model (POM)**, **ThreadLocal WebDriver** for parallel execution, **Allure reporting**, and **Log4j2 logging**.
 
 ---
 
