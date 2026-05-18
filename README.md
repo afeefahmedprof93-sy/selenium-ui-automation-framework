@@ -11,7 +11,6 @@ A robust, production-ready **Selenium + TestNG** automation framework for testin
 ![POM](https://img.shields.io/badge/Framework-Page_Object_Model-purple)
 ![Parallel Execution](https://img.shields.io/badge/Execution-Parallel-success)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=github-actions)
-![License](https://img.shields.io/github/license/YOUR_USERNAME/YOUR_REPO)
 
 ---
 
