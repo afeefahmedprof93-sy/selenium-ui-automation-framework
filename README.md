@@ -4,6 +4,16 @@ A robust, production-ready **Selenium + TestNG** automation framework for testin
 
 ---
 
+## 📸 Screenshots of Test Execution Reports
+
+![Test Execution Report](Screenshots/Screenshot_01.png)
+*Allure Report — Test execution summary with pass/fail breakdown*
+
+![Test Suite Run](Screenshots/Screenshot_02.png)
+*Test suite run showing Smoke + Functional test results*
+
+---
+
 ## 📋 Table of Contents
 
 - [Tech Stack](#-tech-stack)
@@ -14,6 +24,7 @@ A robust, production-ready **Selenium + TestNG** automation framework for testin
 - [Configuration](#-configuration)
 - [Running Tests](#-running-tests)
 - [Test Reporting](#-test-reporting)
+- [Test Coverage](#-test-coverage)
 - [Key Design Decisions](#-key-design-decisions)
 
 ---
@@ -45,7 +56,12 @@ OrangeHRMAutomation/
 │   │   ├── base/
 │   │   │   └── BasePage.java          # Parent for all Page classes; shared step logging
 │   │   ├── pageobjects/
-│   │   │   └── LoginPage.java         # Page Object for the Login page
+│   │   │   ├── LoginPage.java         # Page Object for the Login page
+│   │   │   ├── DashboardPage.java     # Page Object for the Dashboard
+│   │   │   ├── AdminPage.java         # Page Object for the Admin module
+│   │   │   ├── PIMPage.java           # Page Object for the PIM (Employee) module
+│   │   │   ├── LeavePage.java         # Page Object for the Leave module
+│   │   │   └── MyInfoPage.java        # Page Object for the My Info module
 │   │   └── utils/
 │   │       ├── AllureReport.java      # Programmatic Allure report generation
 │   │       ├── ConfigReader.java      # Reads config.properties (singleton utility)
@@ -61,10 +77,11 @@ OrangeHRMAutomation/
 │       ├── base/
 │       │   └── BaseTest.java          # Parent for all Test classes; setup & teardown
 │       └── testcases/
-│           └── LoginPageTest.java     # Test cases for Login functionality
+│           ├── LoginPageTest.java     # Test cases for Login functionality
+│           └── FunctionalTest.java    # Functional tests: PIM, Leave, Admin, My Info
 │
 ├── test-suites/
-│   └── smoketest.xml              # TestNG suite definition for smoke tests
+│   └── smoketest.xml              # TestNG suite: Smoke + Functional tests combined
 │
 └── pom.xml                        # Maven dependencies & build config
 ```
@@ -78,9 +95,9 @@ BaseTest (@BeforeMethod / @AfterMethod)
     └── DriverManager (ThreadLocal WebDriver)
     └── ConfigReader (config.properties)
 
-Test Classes (e.g., LoginPageTest)
+Test Classes (e.g., LoginPageTest, FunctionalTest)
     └── PageManager (PageFactory)
-        └── Page Objects (e.g., LoginPage)
+        └── Page Objects (LoginPage, AdminPage, PIMPage, LeavePage, MyInfoPage, DashboardPage)
             └── BasePage (stepPassed / stepFailed)
                 └── ScreenshotUtil (auto screenshot on failure)
                 └── Allure (step logging in report)
@@ -156,7 +173,7 @@ To switch browsers, simply change the `browser` property — no code changes req
 
 ## ▶️ Running Tests
 
-**Run the full smoke test suite:**
+**Run the full smoke + functional test suite:**
 ```bash
 mvn clean test
 ```
@@ -164,6 +181,7 @@ mvn clean test
 **Run a specific test class:**
 ```bash
 mvn clean test -Dtest=LoginPageTest
+mvn clean test -Dtest=FunctionalTest
 ```
 
 **Run with a specific TestNG XML suite:**
@@ -195,6 +213,53 @@ Each Allure report includes:
 
 ---
 
+## 📌 Test Coverage
+
+### 🔐 Authentication (`LoginPageTest`)
+
+| Test ID | Test Case                          | Description                                              | Severity |
+|---------|------------------------------------|----------------------------------------------------------|----------|
+| TC_001  | Login with valid credentials       | Enter Admin/admin123 → verify redirect to dashboard      | CRITICAL |
+| TC_002  | Login with invalid credentials     | Enter wrong username/password → verify error message     | CRITICAL |
+| TC_003  | Login with empty fields            | Submit blank form → verify required field validation     | HIGH     |
+
+### 👥 PIM Module (`FunctionalTest`)
+
+| Test ID | Test Case                | Description                                                         | Severity |
+|---------|--------------------------|---------------------------------------------------------------------|----------|
+| TC01    | Employee Search          | Search by employee name and verify first result matches query       | CRITICAL |
+| TC02    | Add New Employee         | Create a new employee with a unique timestamped name                | CRITICAL |
+| TC03    | Edit Employee Details    | Search for an employee and update their middle name                 | NORMAL   |
+| TC04    | Delete Employee          | Select and delete a previously added employee with confirmation     | CRITICAL |
+
+### 🌴 Leave Module (`FunctionalTest`)
+
+| Test ID | Test Case       | Description                                                              | Severity |
+|---------|-----------------|--------------------------------------------------------------------------|----------|
+| TC05    | Apply Leave     | Apply US - Vacation leave for an employee across a specified date range  | NORMAL   |
+| TC06    | Leave List      | Filter and view leave records for the full year                          | NORMAL   |
+
+### 👤 My Info Module (`FunctionalTest`)
+
+| Test ID | Test Case               | Description                                             | Severity |
+|---------|-------------------------|---------------------------------------------------------|----------|
+| TC07    | Update Personal Info    | Update middle name and other ID fields in My Info       | CRITICAL |
+
+### 🏠 Dashboard (`FunctionalTest`)
+
+| Test ID | Test Case                   | Description                                              | Severity |
+|---------|-----------------------------|----------------------------------------------------------|----------|
+| TC08    | Dashboard Widgets Visibility | Verify Quick Launch, Employee Distribution chart visible | NORMAL   |
+
+### ⚙️ Admin Module (`FunctionalTest`)
+
+| Test ID | Test Case              | Description                                                       | Severity |
+|---------|------------------------|-------------------------------------------------------------------|----------|
+| TC09    | User Role Search       | Filter users by Admin role and validate all results match         | CRITICAL |
+| TC10    | Add Job Title          | Navigate to Job Titles and create a new entry via automation      | CRITICAL |
+
+---
+
 ## 💡 Key Design Decisions
 
 **ThreadLocal WebDriver (`DriverManager`)**
@@ -214,16 +279,6 @@ Loaded once via a static block, `ConfigReader` provides type-safe access to all 
 
 **Auto-screenshot on Failure**
 `ScreenshotUtil` uses Allure's `@Attachment` annotation to automatically embed a PNG screenshot into the report whenever a test step fails.
-
----
-
-## 📌 Test Coverage
-
-| Module         | Test Case       | Description                        | Severity |
-|----------------|-----------------|------------------------------------|----------|
-| Authentication | `Login with valid credentials`   | Enter Admin/admin123 → verify redirect to dashboard      | CRITICAL |
-| Authentication | `Login with invalid credentials`   | Enter wrong username/password → verify error message      | CRITICAL |
-| Authentication | `Login with empty fields`   | Submit blank form → verify required field validation       | HIGH |
 
 ---
 
