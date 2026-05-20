@@ -14,18 +14,18 @@ A robust, production-ready **Selenium + TestNG** automation framework for testin
 
 ## Key Highlights
 
-- Built using Selenium 4, Java 21, TestNG, and Maven
-- Designed with scalable Page Object Model (POM) architecture
-- Implemented thread-safe parallel execution using ThreadLocal WebDriver
-- Integrated Allure Reports for detailed execution reporting and analysis
-- Configured Log4j2 for centralized logging and debugging
-- Added automatic screenshot capture on test failure
-- Supports cross-browser execution for Chrome, Firefox, and Edge
-- Implemented reusable utility/helper classes for maintainability
-- Centralized configuration management using properties files
-- Structured test suites for smoke, sanity, and regression testing
-- CI/CD-ready framework with GitHub Actions integration
-- Clean and modular framework structure following industry best practices
+- Enterprise-style automation framework using Selenium 4 + Java 21  
+- Scalable Page Object Model (POM) design  
+- Thread-safe parallel execution using ThreadLocal WebDriver  
+- Cross-browser testing support (Chrome, Firefox, Edge)  
+- Allure Reports integration for detailed reporting  
+- Log4j2 integration for centralized logging and debugging  
+- Automatic screenshot capture on test failure  
+- Reusable utilities and helper methods for maintainability  
+- Maven-based dependency and build management  
+- Configurable execution using properties files  
+- Smoke, sanity, and regression suite organization  
+- CI/CD-ready framework with GitHub Actions integration  
 
 ---
 
