@@ -1,7 +1,5 @@
 # 🍊 OrangeHRM UI Automation Framework
 
-A robust, production-ready **Selenium + TestNG** automation framework for testing the [OrangeHRM](https://opensource-demo.orangehrmlive.com) web application. Built with clean architecture principles, including the **Page Object Model (POM)**, **ThreadLocal WebDriver** for parallel execution, **Allure reporting**, and **Log4j2 logging**.
-
 ![Java](https://img.shields.io/badge/Java-17-orange?logo=openjdk)
 ![Selenium](https://img.shields.io/badge/Selenium-Automation-43B02A?logo=selenium)
 ![TestNG](https://img.shields.io/badge/TestNG-Testing-red)
@@ -11,6 +9,23 @@ A robust, production-ready **Selenium + TestNG** automation framework for testin
 ![POM](https://img.shields.io/badge/Framework-Page_Object_Model-purple)
 ![Parallel Execution](https://img.shields.io/badge/Execution-Parallel-success)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=github-actions)
+
+A robust, production-ready **Selenium + TestNG** automation framework for testing the [OrangeHRM](https://opensource-demo.orangehrmlive.com) web application. Built with clean architecture principles, including the **Page Object Model (POM)**, **ThreadLocal WebDriver** for parallel execution, **Allure reporting**, and **Log4j2 logging**.
+
+## Key Highlights
+
+- Built using Selenium 4, Java 21, TestNG, and Maven
+- Designed with scalable Page Object Model (POM) architecture
+- Implemented thread-safe parallel execution using ThreadLocal WebDriver
+- Integrated Allure Reports for detailed execution reporting and analysis
+- Configured Log4j2 for centralized logging and debugging
+- Added automatic screenshot capture on test failure
+- Supports cross-browser execution for Chrome, Firefox, and Edge
+- Implemented reusable utility/helper classes for maintainability
+- Centralized configuration management using properties files
+- Structured test suites for smoke, sanity, and regression testing
+- CI/CD-ready framework with GitHub Actions integration
+- Clean and modular framework structure following industry best practices
 
 ---
 
