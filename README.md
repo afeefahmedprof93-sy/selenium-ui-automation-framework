@@ -25,17 +25,24 @@ A robust, production-ready **Selenium + TestNG** automation framework for testin
 - Maven-based dependency and build management  
 - Configurable execution using properties files  
 - Smoke, sanity, and regression suite organization  
-- CI/CD-ready framework with GitHub Actions integration  
+- CI/CD-ready framework with GitHub Actions integration 
 
----
 
-## 📸 Screenshots of Test Execution Reports
 
-![Test Execution Report](Screenshots/Screenshot_01.png)
-*Allure Report — Test execution summary with pass/fail breakdown*
+*Test execution demo*
+
+![Demo](Screenshots/selenium01.gif)
+
+*Test suite run showing Smoke + Functional test results*
 
 ![Test Suite Run](Screenshots/Screenshot_02.png)
-*Test suite run showing Smoke + Functional test results*
+
+*Allure Report — Test execution summary with pass/fail breakdown*
+
+![Test Execution Report](Screenshots/Screenshot_01.png)
+
+
+
 
 ---
 
