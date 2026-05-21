@@ -46,22 +46,22 @@ A robust, production-ready **Selenium + TestNG** automation framework for testin
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Framework Architecture](#-framework-architecture)
-- [Prerequisites](#-prerequisites)
-- [Setup & Installation](#-setup--installation)
-- [Configuration](#-configuration)
-- [Running Tests](#-running-tests)
-- [Test Reporting](#-test-reporting)
-- [Test Coverage](#-test-coverage)
-- [Key Design Decisions](#-key-design-decisions)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Framework Architecture](#framework-architecture)
+- [Prerequisites](#prerequisites)
+- [Setup & Installation](#setup--installation)
+- [Configuration](#configuration)
+- [Running Tests](#running-tests)
+- [Test Reporting](#test-reporting)
+- [Test Coverage](#test-coverage)
+- [Key Design Decisions](#key-design-decisions)
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Tool / Library         | Version   | Purpose                                      |
 |------------------------|-----------|----------------------------------------------|
@@ -75,7 +75,7 @@ A robust, production-ready **Selenium + TestNG** automation framework for testin
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 OrangeHRMAutomation/
@@ -120,7 +120,7 @@ OrangeHRMAutomation/
 
 ---
 
-## 🏗 Framework Architecture
+## Framework Architecture
 
 ```
 BaseTest (@BeforeMethod / @AfterMethod)
@@ -144,7 +144,7 @@ AllureReport (@AfterSuite)
 
 ---
 
-## ✅ Prerequisites
+## Prerequisites
 
 Before running the project, make sure you have the following installed:
 
@@ -162,7 +162,7 @@ allure --version
 
 ---
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 1. **Clone the repository:**
    ```bash
@@ -179,7 +179,7 @@ allure --version
 
 ---
 
-## 🔧 Configuration
+## Configuration
 
 All test configuration is managed via `config/config.properties`:
 
@@ -203,7 +203,7 @@ To switch browsers, simply change the `browser` property — no code changes req
 
 ---
 
-## ▶️ Running Tests
+## Running Tests
 
 **Run the full smoke + functional test suite:**
 ```bash
@@ -223,7 +223,7 @@ mvn clean test -DsuiteXmlFile=test-suites/smoketest.xml
 
 ---
 
-## 📊 Test Reporting
+## Test Reporting
 
 This framework uses **Allure** for rich HTML test reports. Reports are `auto-generated` after each suite run via `AllureReport.java`.
 
@@ -245,9 +245,9 @@ Each Allure report includes:
 
 ---
 
-## 📌 Test Coverage
+## Test Coverage
 
-### 🔐 Authentication (`LoginPageTest`)
+### Authentication (`LoginPageTest`)
 
 | Test ID | Test Case                          | Description                                              | Severity |
 |---------|------------------------------------|----------------------------------------------------------|----------|
@@ -255,7 +255,7 @@ Each Allure report includes:
 | TC_002  | Login with invalid credentials     | Enter wrong username/password → verify error message     | CRITICAL |
 | TC_003  | Login with empty fields            | Submit blank form → verify required field validation     | HIGH     |
 
-### 👥 PIM Module (`FunctionalTest`)
+### PIM Module (`FunctionalTest`)
 
 | Test ID | Test Case                | Description                                                         | Severity |
 |---------|--------------------------|---------------------------------------------------------------------|----------|
@@ -264,26 +264,26 @@ Each Allure report includes:
 | TC03    | Edit Employee Details    | Search for an employee and update their middle name                 | NORMAL   |
 | TC04    | Delete Employee          | Select and delete a previously added employee with confirmation     | CRITICAL |
 
-### 🌴 Leave Module (`FunctionalTest`)
+### Leave Module (`FunctionalTest`)
 
 | Test ID | Test Case       | Description                                                              | Severity |
 |---------|-----------------|--------------------------------------------------------------------------|----------|
 | TC05    | Apply Leave     | Apply US - Vacation leave for an employee across a specified date range  | NORMAL   |
 | TC06    | Leave List      | Filter and view leave records for the full year                          | NORMAL   |
 
-### 👤 My Info Module (`FunctionalTest`)
+### My Info Module (`FunctionalTest`)
 
 | Test ID | Test Case               | Description                                             | Severity |
 |---------|-------------------------|---------------------------------------------------------|----------|
 | TC07    | Update Personal Info    | Update middle name and other ID fields in My Info       | CRITICAL |
 
-### 🏠 Dashboard (`FunctionalTest`)
+### Dashboard (`FunctionalTest`)
 
 | Test ID | Test Case                   | Description                                              | Severity |
 |---------|-----------------------------|----------------------------------------------------------|----------|
 | TC08    | Dashboard Widgets Visibility | Verify Quick Launch, Employee Distribution chart visible | NORMAL   |
 
-### ⚙️ Admin Module (`FunctionalTest`)
+### Admin Module (`FunctionalTest`)
 
 | Test ID | Test Case              | Description                                                       | Severity |
 |---------|------------------------|-------------------------------------------------------------------|----------|
@@ -292,7 +292,7 @@ Each Allure report includes:
 
 ---
 
-## 💡 Key Design Decisions
+## Key Design Decisions
 
 **ThreadLocal WebDriver (`DriverManager`)**
 Each test thread gets its own isolated `WebDriver` instance, enabling safe parallel test execution without driver conflicts.
@@ -314,7 +314,7 @@ Loaded once via a static block, `ConfigReader` provides type-safe access to all 
 
 ---
 
-## 👤 Author & Collaborators
+## Author & Collaborators
 
 **Afeef Ahmed**
 
